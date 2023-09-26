@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar/Navbar";
 import "./globals.css";
 
 export const metadata = {
@@ -8,8 +9,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <div>Navbar goes here</div>
-      {children}
+      <head>
+        <script
+          src="https://kit.fontawesome.com/cab3be8c56.js"
+          crossOrigin="anonymous"
+        ></script>
+      </head>
+      <body>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
