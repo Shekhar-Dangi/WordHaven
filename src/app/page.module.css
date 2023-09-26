@@ -21,3 +21,38 @@
   display: flex;
   justify-content: center;
 }
+.newPosts {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+.newPostsH {
+  padding: 0 5% 5% 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: linear-gradient(to bottom, #fed6e3 10%, #fff 100%);
+}
+.newPostsH h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+}
+.recPostsH h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+}
+.recPostsH {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 2rem;
+  width: 100%;
+}
+.leftAlign {
+  text-align: right;
+  width: 100%;
+}

@@ -1,0 +1,7 @@
+.imgL {
+  max-width: 100%;
+  height: auto;
+}
+.down {
+  flex-direction: column;
+}

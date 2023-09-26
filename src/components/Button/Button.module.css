@@ -4,6 +4,7 @@
   text-align: center;
   margin: 0 1rem;
   transition: transform 0.3s ease-in-out;
+  display: inline-block;
 }
 .button:hover {
   transform: scale(1.05);
