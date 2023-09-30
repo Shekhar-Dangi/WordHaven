@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar/Navbar";
 import styles from "./page.module.css";
 import Button from "@/components/Button/Button";
 import PostL from "@/components/PostL/PostL";

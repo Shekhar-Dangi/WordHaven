@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar/Navbar";
 import "./globals.css";
+import AuthProvider from "./providers/AuthProvider";
 
 export const metadata = {
   title: "WordHaven",
@@ -15,9 +16,12 @@ export default function RootLayout({ children }) {
           crossOrigin="anonymous"
         ></script>
       </head>
+
       <body>
-        <Navbar />
-        {children}
+        <AuthProvider>
+          <Navbar />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
