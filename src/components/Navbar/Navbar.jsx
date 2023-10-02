@@ -1,26 +1,44 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import styles from "./Navbar.module.css";
 import Button from "../Button/Button";
+import { useSession } from "next-auth/react";
+import ProfileS from "../ProfileS/ProfileS";
 
 const Navbar = () => {
+  const { data: session, status } = useSession();
+  console.log(session, status);
   return (
     <nav className={`${styles.navbar} tNav`}>
       <div className={styles.left}>
-        <Link className={styles.item} href="H">
+        <Link className={styles.item} href="/">
           Home
         </Link>
-        <Link className={styles.item} href="H">
+        <Link className={styles.item} href="/words">
           Posts
         </Link>
-        <Link className={styles.item} href="H">
-          ABOUT
+        <Link className={styles.item} href="/about">
+          About
         </Link>
       </div>
       <div className={`${styles.mid} tWebHead`}>WordHaven</div>
       <div className={styles.right}>
         <i className="fa-solid fa-magnifying-glass"></i>
-        <Button color="white" backCol="black" text="Login" />
+
+        {status == "unauthenticated" ? (
+          <Link href="/auth">
+            {" "}
+            <Button color="white" backCol="black" text="Login" />
+          </Link>
+        ) : (
+          <ProfileS
+            size={"40px"}
+            fSize={"1rem"}
+            src={session?.user?.image}
+            text={session?.user?.name}
+          />
+        )}
       </div>
     </nav>
   );

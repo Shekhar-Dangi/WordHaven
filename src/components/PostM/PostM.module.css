@@ -1,0 +1,32 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  background-color: rgba(255, 255, 255, 0.65);
+  padding: 1rem;
+  border-radius: 5px;
+}
+.container:hover {
+  cursor: pointer;
+}
+.img {
+  max-width: 300px;
+  height: auto;
+  margin-right: 0.5rem;
+}
+.details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.details span {
+  color: rgb(62, 61, 61);
+  text-decoration: none;
+  font-size: 0.8rem;
+  margin-left: 0.1rem;
+}
+
+.content {
+  margin-bottom: 1rem;
+}

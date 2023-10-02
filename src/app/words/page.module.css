@@ -1,0 +1,11 @@
+.container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+}
+.posts {
+  flex: 2;
+}
+.cat {
+  flex: 1;
+}

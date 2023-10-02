@@ -1,17 +1,16 @@
+const Post = require("../../../models/Post");
 import { NextResponse } from "next/server";
 import connectDB from "@/utils/connect";
 const mongoose = require("mongoose");
 
-const User = require("../../../models/User");
-
 export const GET = async (req) => {
   try {
     await connectDB();
+    const posts = await Post.find({});
+    return new NextResponse(JSON.stringify(posts));
   } catch (error) {
-    console.error(error);
+    return error;
   } finally {
     mongoose.connection.close();
   }
-
-  return new NextResponse("Hell");
 };

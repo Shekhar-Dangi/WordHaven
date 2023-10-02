@@ -1,0 +1,20 @@
+.container {
+  width: 70%;
+  margin: auto;
+  min-height: 100vh;
+}
+.heading {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.info span {
+  color: rgb(62, 61, 61);
+  text-decoration: none;
+  font-size: 0.8rem;
+  margin-left: 0.1rem;
+}

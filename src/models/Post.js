@@ -61,7 +61,7 @@ const blogPostSchema = new mongoose.Schema({
   averageRating: Number, // Average reader rating
 });
 
-// Create a model using the schema
-const Post = mongoose.model("BlogPost", blogPostSchema);
+const Post =
+  mongoose.models.BlogPost || mongoose.model("BlogPost", blogPostSchema);
 
 module.exports = Post;

@@ -2,9 +2,10 @@
   border-radius: 0.75rem;
   padding: 0.3rem 1rem;
   text-align: center;
-  margin: 0 1rem;
+  margin-right: 1rem;
   transition: transform 0.3s ease-in-out;
   display: inline-block;
+  align-self: center;
 }
 .button:hover {
   transform: scale(1.05);

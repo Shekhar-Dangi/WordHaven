@@ -1,0 +1,31 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #a8edea 0%, #fed6e3 100%);
+  width: 90%;
+  margin: auto;
+}
+.webHead {
+  text-align: center;
+}
+.loginMet {
+  padding: 1rem 0 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+.authItem {
+  margin: 0 2rem 0 2rem;
+  padding: 0.5rem 2rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+}
+.down {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+}
