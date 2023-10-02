@@ -2,24 +2,44 @@ import React from "react";
 import styles from "./page.module.css";
 import ProfileS from "@/components/ProfileS/ProfileS";
 import { getDate } from "@/utils/date";
+import Comment from "@/components/Comment/Comment";
+import TextBox from "@/components/TextBox/TextBox";
+import Button from "@/components/Button/Button";
 
-const page = ({ params }) => {
-  const post = {
-    title: "This post teaches you about everything!",
-    date: "2023-05-13T09:52:21.409Z",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt minus tenetur accusantium voluptatum sapiente alias placeat voluptates veniam, iure similique. Voluptate, similique sit. Impedit quos beatae magnam mollitia totam soluta vitae sed dolor quis blanditiis odit, laborum quo recusandae nihil laboriosam expedita alias, praesentium atque accusantium! Labore laborum blanditiis nihil expedita totam eum fugit quod debitis veritatis, minima ipsa distinctio nostrum dolores praesentium suscipit vel amet quidem possimus eos necessitatibus nam! Ex maxime ipsa obcaecati dolores asperiores recusandae illo sequi explicabo ut quia mollitia ad omnis, repellendus fugit vitae praesentium optio, veritatis facilis? Assumenda ab fugit, totam quia labore eligendi. \n " +
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita id dolorem totam vel. Velit veniam veritatis repellat eveniet dolorem inventore culpa nostrum pariatur tempora! Quibusdam officia ab, error perspiciatis harum debitis optio dolorem deserunt libero sint sapiente ipsa rem ipsum dolores tempore inventore beatae autem, dolor dignissimos voluptatibus? Accusamus deserunt reiciendis nihil eius quas odit. Animi officiis ea nostrum consequatur itaque temporibus impedit quia rerum! Debitis deserunt iusto ad architecto excepturi et itaque tempore iure eaque dicta quo aliquid, totam minus expedita sunt mollitia nostrum delectus possimus nesciunt odit repellat! Quaerat adipisci deserunt illum voluptate facere quas debitis rem incidunt tenetur quasi soluta, rerum unde ad, labore blanditiis voluptas ipsum magni doloribus, earum sit! Perferendis ullam dicta, harum ea, quod porro molestiae maiores similique fugiat temporibus sint saepe voluptatibus? Nulla voluptate rerum magni odio commodi culpa sed necessitatibus incidunt reiciendis eveniet, possimus veritatis ipsa autem ipsam at quasi adipisci consectetur ullam, distinctio nesciunt aliquid. Ab, quisquam ipsum. Optio, officiis perferendis? Odit fuga velit recusandae laudantium porro ut quibusdam qui repellat, facilis voluptatibus commodi doloribus magni dolorum esse veritatis alias quod optio ad dolorem aut odio, harum, corrupti excepturi. Accusantium minima repudiandae soluta fugiat quia in qui tenetur fugit sapiente eum? Dolore, dolorum unde est placeat, ratione labore, corrupti eveniet provident nam temporibus culpa facilis nemo rerum sequi magni eius! Nesciunt, unde rem? Maxime ad quaerat consequatur. Accusantium voluptatem nesciunt dolores corrupti, tempore necessitatibus saepe nostrum in laborum eum, error exercitationem officia fugiat veniam. Placeat magnam enim, porro ullam aliquid in quis iste ipsa laudantium laboriosam qui numquam culpa, tempora omnis inventore rerum alias! Facilis cupiditate repudiandae totam est ab harum similique quam ipsam, reiciendis exercitationem quod eius molestiae adipisci explicabo, officia, blanditiis nulla vero? Consequatur soluta a quaerat quis ipsam. Ut animi ipsum nobis laudantium consequatur officiis repudiandae natus labore.",
-  };
+const getPost = async (id) => {
+  const res = await fetch(`http://127.0.0.1:3000/api/words/${id}`, {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error("Failed");
+  }
+  return res.json();
+};
+
+const page = async ({ params }) => {
   const id = params.id;
+  const post = await getPost(id);
+  const obj = {
+    author: {
+      name: "Iron Man",
+      image:
+        "https://as1.ftcdn.net/v2/jpg/03/16/64/94/1000_F_316649462_XDY0jtTHgKzIQrwCtRxCYf4bxYPhfch3.jpg",
+    },
+    content: "this is a good explanation!",
+  };
   return (
     <div className={styles.container}>
-      <h1 className={`f2 ${styles.heading}`}>{post.title}</h1>
+      <h1 className={`f2 ${styles.heading}`}>{post?.title}</h1>
       <div className={styles.info}>
-        <ProfileS />
-        &middot; <span>{getDate(post.date)}</span>
+        <ProfileS isNew={false} obj={obj} />
+        &middot; <span>{getDate(post?.date)}</span>
       </div>
-      <p>{post.content}</p>
+      <p>{post?.content}</p>
+      <h2 className={`${styles.cHead} f1half`}>Post your comment!</h2>
+      <TextBox />
+      <Button color={"white"} backCol={"#4A8076"} text={"Post"} />
+      <h2 className={`${styles.cHead} f1half`}>Comments(4)</h2>
+      <Comment obj={obj} />
     </div>
   );
 };

@@ -3,18 +3,18 @@ import React from "react";
 import styles from "./ProfileS.module.css";
 import { useSession } from "next-auth/react";
 
-const ProfileS = ({ size, fSize }) => {
+const ProfileS = ({ size, fSize, isNew, obj }) => {
   const { data: session, status } = useSession();
   return (
     <div className={styles.container}>
       <img
         className={styles.profileImg}
         style={{ height: size }}
-        src={session?.user?.image}
+        src={!isNew ? session?.user?.image : obj.image}
         alt=""
       />
       <p style={{ fontSize: fSize }} className={styles.text}>
-        {session?.user?.name}
+        {!isNew ? session?.user?.name : obj.name}
       </p>
     </div>
   );
