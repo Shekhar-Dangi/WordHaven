@@ -5,12 +5,13 @@ import Button from "../Button/Button";
 import Link from "next/link";
 import { getDate } from "@/utils/date";
 import { Remarkable } from "remarkable";
+import Image from "next/image";
 
 const PostM = ({ imgUrl, title, author, time, content, id }) => {
   const md = new Remarkable({ html: true });
   return (
     <div id={id} className={styles.container}>
-      <img className={styles.img} src={imgUrl} />
+      <Image alt="post image" className={styles.img} src={imgUrl} />
       <div className={styles.textContainer}>
         <span className={`${styles.title} f1half`}>{title}</span>
         <div className={styles.details}>

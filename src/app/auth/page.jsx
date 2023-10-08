@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import InputText from "@/components/InputText/InputText";
 import InputBox from "@/components/InputBox/InputBox";
 import Button from "@/components/Button/Button";
+import Image from "next/image";
 
 const LoginPage = () => {
   const { status } = useSession();
@@ -25,25 +26,28 @@ const LoginPage = () => {
         <div className={`${styles.webHead} f1half tNav`}>Welcome Back</div>
         <div className={styles.loginMet}>
           <span className={styles.authItemContainer}>
-            <img
+            <Image
+              alt="google"
               src="/google.png"
               onClick={() => signIn("google")}
               className={`${styles.authItem}`}
-            ></img>
+            ></Image>
           </span>
           <span className={styles.authItemContainer}>
-            <img
+            <Image
+              alt="github"
               src="/github.png"
               className={`${styles.authItem}`}
               style={{ color: "#000" }}
-            ></img>
+            ></Image>
           </span>
           <span className={styles.authItemContainer}>
-            <img
+            <Image
+              alt="apple"
               src="/apple-logo.png"
               className={`${styles.authItem} f2 fa-brands fa-apple`}
               style={{ color: "#000" }}
-            ></img>
+            ></Image>
           </span>
         </div>
         <form className={styles.form} action="">

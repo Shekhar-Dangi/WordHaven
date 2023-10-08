@@ -56,7 +56,7 @@ const GenerateWordsPage = () => {
     if (!(session?.user?.email == process.env.NEXT_PUBLIC_AUTH_EMAIL)) {
       router.push("/");
     }
-  }, []);
+  }, [router, session?.user?.email]);
   return (
     <div className={styles.container}>
       <h1 className={styles.heading}>Create a New Post</h1>

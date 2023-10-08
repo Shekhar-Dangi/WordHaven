@@ -38,7 +38,7 @@ const Blog = () => {
     return () => {
       console.log("removed");
     };
-  }, []);
+  }, [session]);
   return (
     <div className={styles.container}>
       {loading ? (
