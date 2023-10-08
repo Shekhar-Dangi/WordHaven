@@ -26,28 +26,28 @@ const LoginPage = () => {
         <div className={`${styles.webHead} f1half tNav`}>Welcome Back</div>
         <div className={styles.loginMet}>
           <span className={styles.authItemContainer}>
-            <Image
+            <img
               alt="google"
               src="/google.png"
               onClick={() => signIn("google")}
               className={`${styles.authItem}`}
-            ></Image>
+            ></img>
           </span>
           <span className={styles.authItemContainer}>
-            <Image
+            <img
               alt="github"
               src="/github.png"
               className={`${styles.authItem}`}
               style={{ color: "#000" }}
-            ></Image>
+            ></img>
           </span>
           <span className={styles.authItemContainer}>
-            <Image
+            <img
               alt="apple"
               src="/apple-logo.png"
               className={`${styles.authItem} f2 fa-brands fa-apple`}
               style={{ color: "#000" }}
-            ></Image>
+            ></img>
           </span>
         </div>
         <form className={styles.form} action="">

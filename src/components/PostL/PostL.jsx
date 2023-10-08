@@ -8,7 +8,7 @@ import Image from "next/image";
 function PostL({ title, id, imageUrl }) {
   return (
     <div id={id} href={""} className={`${styles.down} post`}>
-      <Image className={styles.imgL} src={imageUrl} alt="Post" />
+      <img className={styles.imgL} src={imageUrl} alt="Post" />
       <p className={styles.para}>{title}</p>
       <Link href={`/words/${id}`}>
         <Button color={"white"} backCol={"black"} text={"Read"} />
