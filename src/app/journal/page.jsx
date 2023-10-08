@@ -47,6 +47,7 @@ const Journal = () => {
           {data.length > 0 &&
             data.map((post) => (
               <PostM
+                key={post._id}
                 id={post._id}
                 title={post.title}
                 imgUrl={post.featuredImage}

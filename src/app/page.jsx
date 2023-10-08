@@ -52,6 +52,7 @@ export default async function Home() {
           {data != null &&
             data.map((post) => (
               <PostL
+                key={post._id}
                 title={post.title}
                 id={post._id}
                 imageUrl={post.featuredImage}
@@ -64,6 +65,7 @@ export default async function Home() {
             {data != null &&
               data.map((post) => (
                 <PostL
+                  key={post._id}
                   title={post.title}
                   id={post._id}
                   imageUrl={post.featuredImage}
