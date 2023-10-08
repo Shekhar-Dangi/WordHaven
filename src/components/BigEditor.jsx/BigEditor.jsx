@@ -14,6 +14,10 @@ const BigEditor = ({ post, edit, id }) => {
   const [title, setTitle] = useState(edit ? post.title : "");
   const [secret, setSecret] = useState("");
   const [value, setValue] = useState(edit ? post.content : "");
+  const [postStatus, setPostStatus] = useState(
+    edit ? post.publicationStatus : "draft"
+  );
+  const [postType, setPostType] = useState(edit ? post.postType : "journal");
   const handleSubmit = async () => {
     const res = await fetch(`http://127.0.0.1:3000/api/words`, {
       method: edit ? "PUT" : "POST",
@@ -23,16 +27,25 @@ const BigEditor = ({ post, edit, id }) => {
         content: value,
         author: session?.user,
         secret: secret || "",
+        postType,
+        publicationStatus: postStatus,
       }),
     });
     const data = await res.json();
+    console.log(data);
     router.push(`/words/${data.id}`);
   };
-  useEffect(() => {
-    if (!(session?.user?.email == process.env.NEXT_PUBLIC_AUTH_EMAIL)) {
-      router.push("/");
-    }
-  }, []);
+  const handlePostStatus = (event) => {
+    setPostStatus(event.target.value);
+  };
+  const handlePostType = (event) => {
+    setPostType(event.target.value);
+  };
+  // useEffect(() => {
+  //   if (!(session?.user?.email == process.env.NEXT_PUBLIC_AUTH_EMAIL)) {
+  //     router.push("/");
+  //   }
+  // }, []);
   return (
     <div className={styles.container}>
       <h1 className={styles.heading}>
@@ -56,29 +69,30 @@ const BigEditor = ({ post, edit, id }) => {
       ) : (
         ""
       )}
-      <div className={styles.uploadSection}>
-        <label htmlFor="featuredImage" className={styles.uploadLabel}>
-          Upload Featured Image
-        </label>
-        <input
-          type="file"
-          id="featuredImage"
-          accept="image/*"
-          //   onChange={handleImageUpload}
-        />
-      </div>
-      <div className={styles.uploadSection}>
-        <label htmlFor="attachment" className={styles.uploadLabel}>
-          Upload Attachments (Multiple)
-        </label>
-        <input
-          type="file"
-          id="attachment"
-          accept="application/pdf,.doc,.docx"
-          multiple
-          //   onChange={handleAttachmentUpload}
-        />
-      </div>
+      <label className={styles.label} for="visibility">
+        Select Visibility:
+      </label>
+      <select
+        value={postStatus}
+        onChange={handlePostStatus}
+        id="visibility"
+        className={styles.minimalDropdown}
+      >
+        <option value="draft">Draft</option>
+        <option value="public">Public</option>
+      </select>
+      <label className={styles.label} for="type">
+        Select Type:
+      </label>
+      <select
+        value={postType}
+        onChange={handlePostType}
+        id="type"
+        className={styles.minimalDropdown}
+      >
+        <option value="journal">Journal</option>
+        <option value="blog">Blog</option>
+      </select>
       <Editor value={value} setValue={setValue} />
       <div className={styles.buttonContainer}>
         <Button

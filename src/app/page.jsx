@@ -11,8 +11,8 @@ export default async function Home() {
     console.log(session);
     const res = await fetch(
       session?.user?.email == process.env.NEXT_PUBLIC_AUTH_EMAIL && session
-        ? `http://localhost:3000/api/words/personal`
-        : `http://localhost:3000/api/words`,
+        ? `${process.env.NEXTAUTH_URL}api/words/personal`
+        : `${process.env.NEXTAUTH_URL}api/words`,
       {
         cache: "no-store",
       }

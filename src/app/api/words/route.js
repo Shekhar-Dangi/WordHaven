@@ -57,7 +57,8 @@ export const POST = async (req) => {
   }
 };
 export const PUT = async (req, { params }) => {
-  const { id, secret, title, content, author } = await req.json();
+  const { id, secret, title, content, author, publicationStatus, postType } =
+    await req.json();
   if (!(secret == process.env.UC)) {
     return new NextResponse(
       JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
@@ -77,6 +78,8 @@ export const PUT = async (req, { params }) => {
 
     post.title = title;
     post.content = content;
+    post.publicationStatus = publicationStatus;
+    post.postType = postType;
     const updatedPost = await post.save();
 
     return new NextResponse(
