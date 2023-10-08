@@ -21,7 +21,7 @@ const page = async ({ params }) => {
   const id = params.id;
   const post = await getPost(id);
   var md = new Remarkable({ html: true });
-  console.log();
+  console.log(post);
   // const sanitizedHTML = DOMPurify.sanitize();
   const obj = {
     author: {
@@ -35,7 +35,7 @@ const page = async ({ params }) => {
     <div className={styles.container}>
       <h1 className={`f2 ${styles.heading}`}>{post?.title}</h1>
       <div className={styles.info}>
-        <ProfileS isNew={false} obj={obj} />
+        <ProfileS isNew={true} obj={post?.author} />
         &middot; <span>{getDate(post?.date)}</span>
       </div>
       <p dangerouslySetInnerHTML={{ __html: md.render(post?.content) }}></p>

@@ -14,7 +14,5 @@ export const GET = async (req, { params }) => {
     return NextResponse.json(post, { status: 200 });
   } catch (error) {
     return new NextResponse(error);
-  } finally {
-    mongoose.connection.close();
   }
 };

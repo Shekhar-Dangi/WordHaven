@@ -22,7 +22,9 @@ const Navbar = () => {
           About
         </Link>
       </div>
-      <div className={`${styles.mid} tWebHead`}>WordHaven</div>
+      <Link href={"/"} className={`cBlack ${styles.mid} tWebHead`}>
+        WordHaven
+      </Link>
       <div className={styles.right}>
         <i className="fa-solid fa-magnifying-glass"></i>
 

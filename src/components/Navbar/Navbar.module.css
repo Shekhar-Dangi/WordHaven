@@ -11,6 +11,7 @@
 }
 .left {
   flex: 1;
+  display: none;
 }
 .mid {
   flex: 1;
@@ -31,4 +32,10 @@
 }
 .item:hover {
   text-decoration: underline;
+}
+
+@media (min-width: 801px) {
+  .left {
+    display: block; /* Show when the width is greater than 800px */
+  }
 }

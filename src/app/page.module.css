@@ -1,3 +1,6 @@
+.header {
+  min-height: 90vh;
+}
 .topHeader {
   height: 40vh;
   /* background: linear-gradient(to bottom, #a8edea 0%, #fed6e3 100%); */

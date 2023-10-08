@@ -1,14 +1,13 @@
 .topContainer {
-  height: 70vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .container {
   background: white;
-
-  padding: 1rem;
-  width: 70%;
+  padding: 2rem 1.2rem;
+  width: 85%;
   margin: auto;
   height: auto;
 }
@@ -40,4 +39,9 @@
 .form {
   display: flex;
   flex-direction: column;
+}
+@media (min-width: 770px) {
+  .container {
+    width: 70%; /* Show when the width is greater than 800px */
+  }
 }

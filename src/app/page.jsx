@@ -10,7 +10,7 @@ export default async function Home() {
     const session = await getAuthSession();
     console.log(session);
     const res = await fetch(
-      session.user.email == process.env.NEXT_PUBLIC_AUTH_EMAIL
+      session?.user?.email == process.env.NEXT_PUBLIC_AUTH_EMAIL && session
         ? `http://localhost:3000/api/words/personal`
         : `http://localhost:3000/api/words`,
       {
@@ -25,7 +25,7 @@ export default async function Home() {
   const data = await getPosts();
   console.log(data);
   return (
-    <div>
+    <div className={styles.header}>
       <div className={styles.topHeader}>
         <div>
           <div className="flex">
@@ -36,9 +36,12 @@ export default async function Home() {
           <div className={`tNav`}>EXPLORE, EXPRESS & ENGAGE</div>
         </div>
         <div className={styles.buttonGroup}>
-          <Button color={"white"} backCol="red" text="BLOG" />
-          <Link href={"/words/generate"}>
+          <Link href={"/journal"}>
+            {" "}
             <Button color={"white"} backCol="red" text="JOURNAL" />
+          </Link>
+          <Link href={"/words"}>
+            <Button color={"white"} backCol="red" text="BLOG" />
           </Link>
         </div>
       </div>

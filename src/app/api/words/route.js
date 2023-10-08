@@ -11,7 +11,7 @@ export const GET = async (req) => {
 
     const posts = await Post.find({
       publicationStatus: "public",
-      postType: blog,
+      postType: "blog",
     });
     return new NextResponse(JSON.stringify(posts));
   } catch (error) {

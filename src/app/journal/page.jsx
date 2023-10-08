@@ -5,22 +5,16 @@ import PostM from "@/components/PostM/PostM";
 import PuffLoader from "react-spinners/PuffLoader";
 import { useSession } from "next-auth/react";
 
-const Blog = () => {
+const Journal = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const { data: session, status } = useSession();
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
       try {
-        const res = await fetch(
-          session && session?.user?.email == process.env.NEXT_PUBLIC_AUTH_EMAIL
-            ? `http://localhost:3000/api/words/personal`
-            : `http://localhost:3000/api/words`,
-          {
-            cache: "no-store",
-          }
-        );
+        const res = await fetch(`http://localhost:3000/api/words/journal`, {
+          cache: "no-store",
+        });
         if (!res.ok) {
           throw new Error("Failed");
         }
@@ -35,9 +29,6 @@ const Blog = () => {
     };
 
     fetchData();
-    return () => {
-      console.log("removed");
-    };
   }, []);
   return (
     <div className={styles.container}>
@@ -70,4 +61,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default Journal;

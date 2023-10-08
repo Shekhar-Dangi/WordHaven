@@ -1,5 +1,5 @@
 .container {
-  width: 70%;
+  width: 85%;
   margin: auto;
   min-height: 100vh;
 }
@@ -21,4 +21,9 @@
 .cHead {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+@media (min-width: 770px) {
+  .container {
+    width: 70%; /* Show when the width is greater than 800px */
+  }
 }

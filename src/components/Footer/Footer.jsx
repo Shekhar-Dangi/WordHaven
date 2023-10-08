@@ -24,7 +24,7 @@ const Footer = () => {
         <Link href={""} className="cBlack f09">
           Apply
         </Link>
-        <Link href={""} className="cBlack f09">
+        <Link href={"/words/generate"} className="cBlack f09">
           Write
         </Link>
       </div>
