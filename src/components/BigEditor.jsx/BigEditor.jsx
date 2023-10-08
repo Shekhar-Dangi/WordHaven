@@ -19,18 +19,21 @@ const BigEditor = ({ post, edit, id }) => {
   );
   const [postType, setPostType] = useState(edit ? post.postType : "journal");
   const handleSubmit = async () => {
-    const res = await fetch(`http://127.0.0.1:3000/api/words`, {
-      method: edit ? "PUT" : "POST",
-      body: JSON.stringify({
-        id,
-        title,
-        content: value,
-        author: session?.user,
-        secret: secret || "",
-        postType,
-        publicationStatus: postStatus,
-      }),
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}api/words`,
+      {
+        method: edit ? "PUT" : "POST",
+        body: JSON.stringify({
+          id,
+          title,
+          content: value,
+          author: session?.user,
+          secret: secret || "",
+          postType,
+          publicationStatus: postStatus,
+        }),
+      }
+    );
     const data = await res.json();
     console.log(data);
     router.push(`/words/${data.id}`);

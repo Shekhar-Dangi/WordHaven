@@ -18,12 +18,13 @@ export default async function Home() {
       }
     );
     if (!res.ok) {
-      throw new Error("Failed");
+      console.log("ERROR : ", res);
+      // throw new Error("Failed");
     }
     return res.json();
   };
   const data = await getPosts();
-  console.log(data);
+  console.log("All posts : ", data);
   return (
     <div className={styles.header}>
       <div className={styles.topHeader}>
