@@ -5,7 +5,7 @@ import Link from "next/link";
 import Button from "../Button/Button";
 function PostL({ title, id, imageUrl }) {
   return (
-    <div href={""} className={`${styles.down} post`}>
+    <div id={id} href={""} className={`${styles.down} post`}>
       <img className={styles.imgL} src={imageUrl} alt="Post" />
       <p className={styles.para}>{title}</p>
       <Link href={`/words/${id}`}>

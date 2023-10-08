@@ -9,7 +9,7 @@ import { Remarkable } from "remarkable";
 const PostM = ({ imgUrl, title, author, time, content, id }) => {
   const md = new Remarkable({ html: true });
   return (
-    <div className={styles.container}>
+    <div id={id} className={styles.container}>
       <img className={styles.img} src={imgUrl} />
       <div className={styles.textContainer}>
         <span className={`${styles.title} f1half`}>{title}</span>
