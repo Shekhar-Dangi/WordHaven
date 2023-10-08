@@ -18,7 +18,7 @@ const ProfileS = ({ size, fSize, isNew, obj, clickable }) => {
       className={styles["profile-container"]}
       onClick={clickable ? toggleDropdown : null}
     >
-      <Image
+      <img
         className={styles["profile-img"]}
         style={{ height: size }}
         src={!isNew ? session?.user?.image : obj.profileImage}
