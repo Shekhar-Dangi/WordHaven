@@ -1,36 +1,67 @@
-import PostL from "@/components/PostL/PostL";
-import PostS from "@/components/PostS/PostS";
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import PostM from "@/components/PostM/PostM";
-const getPosts = async () => {
-  const res = await fetch(`http://127.0.0.1:3000/api/words`, {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
-  return res.json();
-};
+import PuffLoader from "react-spinners/PuffLoader";
+import { useSession } from "next-auth/react";
 
-const Blog = async () => {
-  const data = await getPosts();
-  console.log(data);
+const Blog = () => {
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+  const { data: session, status } = useSession();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          session.user.email == process.env.NEXT_PUBLIC_AUTH_EMAIL
+            ? `http://localhost:3000/api/words/personal`
+            : `http://localhost:3000/api/words`,
+          {
+            cache: "no-store",
+          }
+        );
+        if (!res.ok) {
+          throw new Error("Failed");
+        }
+        const posts = await res.json();
+        console.log(posts);
+        setData(posts);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      }
+    };
 
+    fetchData();
+  }, []);
   return (
     <div className={styles.container}>
-      <div className={styles.posts}>
-        {data.map((post) => (
-          <PostM
-            id={post._id}
-            title={post.title}
-            imgUrl={post.featuredImage}
-            content={post.content}
-            author={post.author}
-            time={post.date}
+      {loading ? (
+        <div className={styles.loader}>
+          <PuffLoader
+            color={"black"}
+            loading={loading}
+            size={150}
+            aria-label="Loading Spinner"
+            data-testid="loader"
           />
-        ))}
-      </div>
+        </div>
+      ) : (
+        <div className={styles.posts}>
+          {data.length > 0 &&
+            data.map((post) => (
+              <PostM
+                id={post._id}
+                title={post.title}
+                imgUrl={post.featuredImage}
+                content={post.content}
+                author={post.author}
+                time={post.date}
+              />
+            ))}
+        </div>
+      )}
     </div>
   );
 };

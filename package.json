@@ -10,13 +10,23 @@
   },
   "dependencies": {
     "@faker-js/faker": "^8.1.0",
+    "@storybook/react": "^7.4.6",
+    "@uiw/react-md-editor": "^3.6.0",
     "axios": "^1.5.1",
+    "dompurify": "^3.0.6",
     "faker": "^5.5.3",
+    "highlight.js": "^11.8.0",
     "mongoose": "^7.5.3",
-    "next": "latest",
+    "next": "^13.5.4",
     "next-auth": "^4.23.1",
+    "next-remove-imports": "^1.0.12",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "^18.2.0",
+    "react-markdown": "^9.0.0",
+    "react-quill": "^2.0.0",
+    "react-spinners": "^0.13.8",
+    "rehype-highlight": "^7.0.0",
+    "remarkable": "^2.0.1"
   },
   "devDependencies": {
     "eslint": "latest",

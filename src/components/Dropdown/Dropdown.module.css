@@ -1,32 +1,8 @@
-/* ProfileS.module.css */
-.profile-container {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  cursor: pointer;
-  padding: 0.5rem;
-}
-
-.profile-img {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  margin-right: 0.5rem;
-}
-
-.profile-text {
-  color: rgb(62, 61, 61);
-  text-decoration: none;
-  font-size: 0.8rem;
-  margin: 0;
-}
-
-/* Dropdown styles */
+/* Dropdown.module.css */
 .dropdown-container {
   position: absolute;
   top: 100%;
-  left: 0;
+  right: 0;
   display: inline-block;
   background-color: #ffffff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);

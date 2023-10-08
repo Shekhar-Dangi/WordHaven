@@ -5,6 +5,7 @@ import { getDate } from "@/utils/date";
 import Comment from "@/components/Comment/Comment";
 import TextBox from "@/components/TextBox/TextBox";
 import Button from "@/components/Button/Button";
+import { Remarkable } from "remarkable";
 
 const getPost = async (id) => {
   const res = await fetch(`http://127.0.0.1:3000/api/words/${id}`, {
@@ -19,6 +20,9 @@ const getPost = async (id) => {
 const page = async ({ params }) => {
   const id = params.id;
   const post = await getPost(id);
+  var md = new Remarkable({ html: true });
+  console.log();
+  // const sanitizedHTML = DOMPurify.sanitize();
   const obj = {
     author: {
       name: "Iron Man",
@@ -34,12 +38,12 @@ const page = async ({ params }) => {
         <ProfileS isNew={false} obj={obj} />
         &middot; <span>{getDate(post?.date)}</span>
       </div>
-      <p>{post?.content}</p>
-      <h2 className={`${styles.cHead} f1half`}>Post your comment!</h2>
+      <p dangerouslySetInnerHTML={{ __html: md.render(post?.content) }}></p>
+      {/* <h2 className={`${styles.cHead} f1half`}>Post your comment!</h2>
       <TextBox />
       <Button color={"white"} backCol={"#4A8076"} text={"Post"} />
       <h2 className={`${styles.cHead} f1half`}>Comments(4)</h2>
-      <Comment obj={obj} />
+      <Comment obj={obj} /> */}
     </div>
   );
 };

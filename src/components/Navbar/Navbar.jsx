@@ -33,8 +33,10 @@ const Navbar = () => {
           </Link>
         ) : (
           <ProfileS
+            clickable={true}
             size={"40px"}
             fSize={"1rem"}
+            isNew={false}
             src={session?.user?.image}
             text={session?.user?.name}
           />

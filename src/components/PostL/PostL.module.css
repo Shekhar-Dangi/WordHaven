@@ -1,7 +1,11 @@
 .imgL {
   max-width: 100%;
   height: auto;
+  margin-bottom: 1rem;
 }
 .down {
   flex-direction: column;
+}
+.para {
+  margin-bottom: 1rem;
 }

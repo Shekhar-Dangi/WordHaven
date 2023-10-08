@@ -11,8 +11,9 @@ const blogPostSchema = new mongoose.Schema({
     required: true,
   },
   author: {
-    type: String,
-    required: true,
+    email: String,
+    username: String,
+    profileImage: String,
   },
   date: {
     type: Date,
@@ -34,7 +35,7 @@ const blogPostSchema = new mongoose.Schema({
   likes: Number, // Number of likes or upvotes
   publicationStatus: {
     type: String,
-    enum: ["draft", "published", "scheduled"],
+    enum: ["draft", "public", "scheduled"],
     default: "draft",
   },
   views: Number, // Number of views or pageviews
@@ -59,6 +60,11 @@ const blogPostSchema = new mongoose.Schema({
   },
   authorNotes: String, // Author's or editor's notes
   averageRating: Number, // Average reader rating
+  postType: {
+    type: String,
+    enum: ["journal", "blog"],
+    default: "journal",
+  },
 });
 
 const Post =

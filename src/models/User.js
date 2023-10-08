@@ -13,7 +13,6 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
   },
   fullName: String,
   profilePicture: String,
@@ -47,6 +46,9 @@ const userSchema = new mongoose.Schema({
   language: String,
   timezone: String,
   emailNotifications: Boolean,
+  provider: {
+    type: String,
+  },
 });
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);

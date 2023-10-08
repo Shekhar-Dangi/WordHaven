@@ -1,0 +1,14 @@
+.container {
+  /* display: flex; */
+  padding: 0.7rem;
+  text-align: center;
+  width: 100%;
+  /* justify-content: space-evenly; */
+  border-top: 1px solid rgb(169, 164, 164);
+}
+.inC {
+  display: flex;
+  width: 60%;
+  margin: auto;
+  justify-content: space-around;
+}
