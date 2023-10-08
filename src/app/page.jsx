@@ -10,18 +10,19 @@ export default async function Home() {
     const session = await getAuthSession();
     console.log(session);
     console.log("url: ", `${process.env.NEXTAUTH_URL}api/words/personal`);
-    const res = await fetch(
-      session?.user?.email == process.env.NEXT_PUBLIC_AUTH_EMAIL && session
-        ? `${process.env.NEXTAUTH_URL}api/words/personal`
-        : `${process.env.NEXTAUTH_URL}api/words`,
-      {
-        cache: "no-store",
-      }
-    );
-    if (!res.ok) {
-      console.log("ERROR : ", res);
-      return null;
+    try {
+      const res = await fetch(
+        session?.user?.email == process.env.NEXT_PUBLIC_AUTH_EMAIL && session
+          ? `${process.env.NEXTAUTH_URL}api/words/personal`
+          : `${process.env.NEXTAUTH_URL}api/words`,
+        {
+          cache: "no-store",
+        }
+      );
+    } catch (error) {
+      console.log("fetch error : ", error);
     }
+
     return res.json();
   };
   const data = await getPosts();
