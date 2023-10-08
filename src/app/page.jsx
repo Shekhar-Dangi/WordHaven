@@ -23,8 +23,8 @@ export default async function Home() {
     }
     return res.json();
   };
-  const data = await getPosts();
-  console.log("All posts : ", data);
+  // const data = await getPosts();
+  // console.log("All posts : ", data);
   return (
     <div className={styles.header}>
       <div className={styles.topHeader}>
@@ -50,7 +50,7 @@ export default async function Home() {
       <div className={styles.newPostsH}>
         <h1>Recent Posts</h1>
         <div className={styles.newPosts}>
-          {data != null &&
+          {/* {data != null &&
             data.map((post) => (
               <PostL
                 key={post._id}
@@ -58,12 +58,12 @@ export default async function Home() {
                 id={post._id}
                 imageUrl={post.featuredImage}
               />
-            ))}
+            ))} */}
         </div>
         <div className={styles.recPostsH}>
           <h1>Recommended Posts</h1>
           <div className={styles.newPosts}>
-            {data != null &&
+            {/* {data != null &&
               data.map((post) => (
                 <PostL
                   key={post._id}
@@ -71,7 +71,7 @@ export default async function Home() {
                   id={post._id}
                   imageUrl={post.featuredImage}
                 />
-              ))}
+              ))} */}
           </div>
           <div className={styles.leftAlign}>
             <Button color="white" backCol="black" text={"Read More"} />{" "}
