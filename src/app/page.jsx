@@ -9,6 +9,7 @@ export default async function Home() {
   const getPosts = async () => {
     const session = await getAuthSession();
     console.log(session);
+    console.log("url: ", `${process.env.NEXTAUTH_URL}api/words/personal`);
     const res = await fetch(
       session?.user?.email == process.env.NEXT_PUBLIC_AUTH_EMAIL && session
         ? `${process.env.NEXTAUTH_URL}api/words/personal`
@@ -19,12 +20,12 @@ export default async function Home() {
     );
     if (!res.ok) {
       console.log("ERROR : ", res);
-      // throw new Error("Failed");
+      return null;
     }
     return res.json();
   };
-  // const data = await getPosts();
-  // console.log("All posts : ", data);
+  const data = await getPosts();
+  console.log("All posts : ", data);
   return (
     <div className={styles.header}>
       <div className={styles.topHeader}>
@@ -50,7 +51,7 @@ export default async function Home() {
       <div className={styles.newPostsH}>
         <h1>Recent Posts</h1>
         <div className={styles.newPosts}>
-          {/* {data != null &&
+          {data != null &&
             data.map((post) => (
               <PostL
                 key={post._id}
@@ -58,12 +59,12 @@ export default async function Home() {
                 id={post._id}
                 imageUrl={post.featuredImage}
               />
-            ))} */}
+            ))}
         </div>
         <div className={styles.recPostsH}>
           <h1>Recommended Posts</h1>
           <div className={styles.newPosts}>
-            {/* {data != null &&
+            {data != null &&
               data.map((post) => (
                 <PostL
                   key={post._id}
@@ -71,7 +72,7 @@ export default async function Home() {
                   id={post._id}
                   imageUrl={post.featuredImage}
                 />
-              ))} */}
+              ))}
           </div>
           <div className={styles.leftAlign}>
             <Button color="white" backCol="black" text={"Read More"} />{" "}

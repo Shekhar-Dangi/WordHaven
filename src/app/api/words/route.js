@@ -14,6 +14,7 @@ export const GET = async (req) => {
       publicationStatus: "public",
       postType: "blog",
     });
+    console.log(posts);
     return new NextResponse(JSON.stringify(posts));
   } catch (error) {
     return new NextResponse(JSON.stringify({ message: error.message }));
