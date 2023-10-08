@@ -19,11 +19,11 @@ export default async function Home() {
           cache: "no-store",
         }
       );
+      return res.json();
     } catch (error) {
       console.log("fetch error : ", error);
+      return null;
     }
-
-    return res.json();
   };
   const data = await getPosts();
   console.log("All posts : ", data);
