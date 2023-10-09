@@ -24,17 +24,16 @@ export default async function Home() {
     }
   };
   const data = await getPosts();
-  console.log(data);
   return (
     <div className={styles.header}>
       <div className={styles.topHeader}>
         <div>
           <div className="flex">
             {" "}
-            <div className={`f3 tWebHead`}>WORDHAVEN</div>
+            <div className={`f3 tWebHead`}>INQUIRING ?</div>
             <div className={styles.arc}></div>
           </div>
-          <div className={`tNav`}>EXPLORE, EXPRESS & ENGAGE</div>
+          <div className={`tNav`}>QUESTIONING THE QUESTIONS</div>
         </div>
         <div className={styles.buttonGroup}>
           <Link href={"/journal"}>

@@ -24,7 +24,6 @@ const page = async ({ params }) => {
   const id = params.id;
   const post = await getPost(id);
   var md = new Remarkable({ html: true });
-  console.log(post);
   // const sanitizedHTML = DOMPurify.sanitize();
   const obj = {
     author: {

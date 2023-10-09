@@ -8,7 +8,6 @@ import ProfileS from "../ProfileS/ProfileS";
 
 const Navbar = () => {
   const { data: session, status } = useSession();
-  console.log(session, status);
   return (
     <nav className={`${styles.navbar} tNav`}>
       <div className={styles.left}>
@@ -23,7 +22,7 @@ const Navbar = () => {
         </Link>
       </div>
       <Link href={"/"} className={`cBlack ${styles.mid} tWebHead`}>
-        WordHaven
+        <img style={{ height: "50px" }} src="/logo.png" />
       </Link>
       <div className={styles.right}>
         <i className="fa-solid fa-magnifying-glass"></i>

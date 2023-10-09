@@ -24,7 +24,6 @@ const Journal = () => {
           throw new Error("Failed");
         }
         const posts = await res.json();
-        console.log(posts);
         setData(posts);
         setLoading(false);
       } catch (error) {

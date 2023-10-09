@@ -35,7 +35,6 @@ const BigEditor = ({ post, edit, id }) => {
       }
     );
     const data = await res.json();
-    console.log(data);
     router.push(`/words/${data.id}`);
   };
   const handlePostStatus = (event) => {

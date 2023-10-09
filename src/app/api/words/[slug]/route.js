@@ -7,7 +7,6 @@ export const GET = async (req, { params }) => {
     await connectDB();
     const postId = params.slug;
     const post = await Post.findById(postId);
-    console.log(post);
     if (!post) {
       return NextResponse.json({ message: "Post not found" }, { status: 404 });
     }
