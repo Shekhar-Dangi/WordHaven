@@ -20,7 +20,7 @@ const ProfileS = ({ size, fSize, isNew, obj, clickable }) => {
     >
       <img
         className={styles["profile-img"]}
-        style={{ height: size }}
+        style={{ height: size, width: size }}
         src={!isNew ? session?.user?.image : obj.profileImage}
         alt="profile image"
       />
