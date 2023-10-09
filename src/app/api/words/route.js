@@ -7,14 +7,11 @@ const User = require("../../../models/User");
 
 export const GET = async (req) => {
   try {
-    console.log("hitted /words");
     await connectDB();
-    console.log("after connecting!");
     const posts = await Post.find({
       publicationStatus: "public",
       postType: "blog",
     });
-    console.log(posts);
     return new NextResponse(JSON.stringify(posts));
   } catch (error) {
     return new NextResponse(JSON.stringify({ message: error.message }));
@@ -23,7 +20,7 @@ export const GET = async (req) => {
 
 export const POST = async (req) => {
   const session = await getAuthSession();
-  console.log(session);
+
   if (!session) {
     return new NextResponse(
       JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
@@ -35,7 +32,6 @@ export const POST = async (req) => {
     const { title, content, author, publicationStatus, postType } =
       await req.json();
     const user = await User.findOne({ email: author.email });
-    console.log(user);
     const post = new Post({
       title,
       content,
@@ -70,8 +66,6 @@ export const PUT = async (req, { params }) => {
     await connectDB();
 
     const post = await Post.findById(id);
-    console.log("post", post);
-    console.log(author);
     if (!post || post.author.email !== author.email) {
       return new NextResponse(
         JSON.stringify({ message: "Unauthorized!" }, { status: 403 })

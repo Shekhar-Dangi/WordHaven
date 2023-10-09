@@ -4,9 +4,11 @@ import styles from "./page.module.css";
 import PostM from "@/components/PostM/PostM";
 import PuffLoader from "react-spinners/PuffLoader";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const Journal = () => {
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
   const [data, setData] = useState([]);
   const { data: session, status } = useSession();
   useEffect(() => {
@@ -30,9 +32,10 @@ const Journal = () => {
         setLoading(false);
       }
     };
-
+    if (session?.user?.email !== process.env.NEXT_PUBLIC_AUTH_EMAIL)
+      router.push("/");
     fetchData();
-  }, []);
+  }, [session]);
   return (
     <div className={styles.container}>
       {loading ? (

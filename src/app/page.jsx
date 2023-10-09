@@ -8,8 +8,6 @@ import Link from "next/link";
 export default async function Home() {
   const getPosts = async () => {
     const session = await getAuthSession();
-    console.log(session);
-    console.log("url: ", `${process.env.NEXTAUTH_URL}api/words/personal`);
     try {
       const res = await fetch(
         session?.user?.email == process.env.NEXT_PUBLIC_AUTH_EMAIL && session
@@ -26,7 +24,6 @@ export default async function Home() {
     }
   };
   const data = await getPosts();
-  console.log("All posts : ", data);
   return (
     <div className={styles.header}>
       <div className={styles.topHeader}>

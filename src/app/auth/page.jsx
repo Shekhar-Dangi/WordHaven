@@ -25,15 +25,18 @@ const LoginPage = () => {
       <div className={styles.container}>
         <div className={`${styles.webHead} f1half tNav`}>Welcome Back</div>
         <div className={styles.loginMet}>
-          <span className={styles.authItemContainer}>
+          <span
+            onClick={() => signIn("google")}
+            className={styles.authItemContainer}
+          >
             <img
               alt="google"
               src="/google.png"
-              onClick={() => signIn("google")}
               className={`${styles.authItem}`}
             ></img>
+            <p className="f09">Continue With Google</p>
           </span>
-          <span className={styles.authItemContainer}>
+          {/* <span className={styles.authItemContainer}>
             <img
               alt="github"
               src="/github.png"
@@ -48,7 +51,7 @@ const LoginPage = () => {
               className={`${styles.authItem} f2 fa-brands fa-apple`}
               style={{ color: "#000" }}
             ></img>
-          </span>
+          </span> */}
         </div>
         <form className={styles.form} action="">
           <InputText label={"USERNAME"} name={"username"} />

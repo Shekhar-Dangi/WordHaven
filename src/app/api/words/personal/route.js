@@ -7,9 +7,7 @@ const User = require("../../../../models/User");
 
 export const GET = async (req) => {
   try {
-    console.log("hitted /words/personal");
     await connectDB();
-    console.log("after connecting!");
     const posts = await Post.find({ postType: "blog" });
 
     return new NextResponse(JSON.stringify(posts));

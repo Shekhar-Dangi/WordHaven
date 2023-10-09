@@ -10,10 +10,17 @@
   display: flex;
   width: 100%;
   margin: auto;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 @media (min-width: 770px) {
   .inC {
-    width: 60%; /* Show when the width is greater than 800px */
+    width: 60%;
+  }
+}
+@media (max-width: 475px) {
+  .inC {
+    /* margin-left: 45%; */
+    align-items: center;
+    flex-direction: column;
   }
 }
