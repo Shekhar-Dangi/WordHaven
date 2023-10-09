@@ -24,6 +24,7 @@ export default async function Home() {
     }
   };
   const data = await getPosts();
+  console.log(data);
   return (
     <div className={styles.header}>
       <div className={styles.topHeader}>
