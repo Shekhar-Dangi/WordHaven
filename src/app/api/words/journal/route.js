@@ -15,3 +15,40 @@ export const GET = async (req) => {
     return new NextResponse(JSON.stringify({ message: error.message }));
   }
 };
+
+export const POST = async (req) => {
+  const session = await getAuthSession();
+
+  if (!session) {
+    return new NextResponse(
+      JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
+    );
+  }
+
+  try {
+    await connectDB();
+    const { title, content, author, publicationStatus, postType } =
+      await req.json();
+    const user = await User.findOne({ email: author.email });
+    const post = new Post({
+      title,
+      content,
+      author: {
+        email: author.email,
+        profileImage: author.image,
+        username: author.name,
+      },
+      publicationStatus,
+      postType,
+    });
+    const savedPost = await post.save();
+
+    return new NextResponse(
+      JSON.stringify({ message: "Saved!", id: savedPost._id }, { status: 200 })
+    );
+  } catch (error) {
+    return new NextResponse(
+      JSON.stringify({ message: "Error!", error: error }, { status: 200 })
+    );
+  }
+};
