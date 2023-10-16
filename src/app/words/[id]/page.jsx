@@ -40,7 +40,10 @@ const page = async ({ params }) => {
         <ProfileS isNew={true} obj={post?.author} />
         &middot; <span>{getDate(post?.date)}</span>
       </div>
-      <p dangerouslySetInnerHTML={{ __html: md.render(post?.content) }}></p>
+      <p
+        style={{ marginBottom: "4rem" }}
+        dangerouslySetInnerHTML={{ __html: md.render(post?.content) }}
+      ></p>
       {/* <h2 className={`${styles.cHead} f1half`}>Post your comment!</h2>
       <TextBox />
       <Button color={"white"} backCol={"#4A8076"} text={"Post"} />
