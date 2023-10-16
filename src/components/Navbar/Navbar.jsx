@@ -25,7 +25,7 @@ const Navbar = () => {
         </Link>
       </div>
       <Link href={"/"} className={`cBlack ${styles.mid} tWebHead`}>
-        <img style={{ height: "50px" }} src="/logo.png" />
+        <img style={{ height: "50px", width: "50px" }} src="/logo.png" />
       </Link>
       <div className={styles.right}>
         <i className="fa-solid fa-magnifying-glass"></i>
