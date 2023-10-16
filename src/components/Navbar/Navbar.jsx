@@ -17,8 +17,11 @@ const Navbar = () => {
         <Link className={styles.item} href="/words">
           Posts
         </Link>
-        <Link className={styles.item} href="/about">
-          About
+        <Link
+          className={styles.item}
+          href="https://main--incredible-empanada-2c926a.netlify.app/"
+        >
+          Portfolio
         </Link>
       </div>
       <Link href={"/"} className={`cBlack ${styles.mid} tWebHead`}>
