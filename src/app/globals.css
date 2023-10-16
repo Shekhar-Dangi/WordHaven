@@ -109,3 +109,8 @@ a {
 .cBlack {
   color: black;
 }
+img {
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
