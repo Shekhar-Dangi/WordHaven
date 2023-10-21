@@ -6,6 +6,7 @@ import Comment from "@/components/Comment/Comment";
 import TextBox from "@/components/TextBox/TextBox";
 import Button from "@/components/Button/Button";
 import { Remarkable } from "remarkable";
+import hljs from "highlight.js";
 
 const getPost = async (id) => {
   const res = await fetch(
@@ -23,7 +24,22 @@ const getPost = async (id) => {
 const page = async ({ params }) => {
   const id = params.id;
   const post = await getPost(id);
-  var md = new Remarkable({ html: true });
+  var md = new Remarkable({
+    html: true,
+    highlight: function (str, lang) {
+      if (lang != "markdown" && lang && hljs.getLanguage(lang)) {
+        try {
+          return hljs.highlight(lang, str).value;
+        } catch (err) {}
+      }
+
+      try {
+        return hljs.highlightAuto(str).value;
+      } catch (err) {}
+
+      return ""; // use external default escaping
+    },
+  });
   // const sanitizedHTML = DOMPurify.sanitize();
   const obj = {
     author: {

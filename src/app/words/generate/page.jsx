@@ -48,7 +48,7 @@ const GenerateWordsPage = () => {
       }),
     });
     const data = await res.json();
-    console.log(data);
+
     router.push(`/words/${data.id}`);
   };
 

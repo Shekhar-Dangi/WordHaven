@@ -71,7 +71,7 @@ const BigEditor = ({ post, edit, id }) => {
       ) : (
         ""
       )}
-      <label className={styles.label} for="visibility">
+      <label className={styles.label} htmlFor="visibility">
         Select Visibility:
       </label>
       <select
@@ -83,7 +83,7 @@ const BigEditor = ({ post, edit, id }) => {
         <option value="draft">Draft</option>
         <option value="public">Public</option>
       </select>
-      <label className={styles.label} for="type">
+      <label className={styles.label} htmlFor="type">
         Select Type:
       </label>
       <select

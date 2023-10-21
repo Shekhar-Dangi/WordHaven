@@ -34,9 +34,6 @@ const Blog = () => {
     };
 
     fetchData();
-    return () => {
-      console.log("removed");
-    };
   }, [session]);
   return (
     <div className={styles.container}>
