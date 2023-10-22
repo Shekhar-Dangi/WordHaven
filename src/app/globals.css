@@ -121,6 +121,7 @@ code.language-javascript {
   background: #222222;
   padding: 2rem;
   color: white;
+  overflow-x: scroll;
 }
 span.hljs-string {
   background: #222222 !important;
