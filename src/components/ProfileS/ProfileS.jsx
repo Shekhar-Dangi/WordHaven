@@ -21,11 +21,17 @@ const ProfileS = ({ size, fSize, isNew, obj, clickable }) => {
       <img
         className={styles["profile-img"]}
         style={{ height: size, width: size }}
-        src={!isNew ? session?.user?.image : obj.profileImage}
+        src={
+          !isNew
+            ? session?.user?.image
+            : "profileImage" in obj
+            ? obj.profileImage
+            : "https://t4.ftcdn.net/jpg/00/65/77/27/360_F_65772719_A1UV5kLi5nCEWI0BNLLiFaBPEkUbv5Fv.jpg"
+        }
         alt="profile image"
       />
       <p style={{ fontSize: fSize }} className={styles["profile-text"]}>
-        {!isNew ? session?.user?.name : obj.username}
+        {!isNew ? session?.user?.name : obj.name || obj.username}
       </p>
       {clickable && isDropdownVisible && (
         <Dropdown

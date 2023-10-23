@@ -26,6 +26,7 @@ const blogPostSchema = new mongoose.Schema({
       name: String,
       email: String,
       content: String,
+      profileImage: String,
       date: {
         type: Date,
         default: Date.now,

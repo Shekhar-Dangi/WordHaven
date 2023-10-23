@@ -4,14 +4,16 @@ import AuthProvider from "./providers/AuthProvider";
 import Footer from "@/components/Footer/Footer";
 
 export const metadata = {
-  title: "WordHaven",
-  description: "To be edited",
+  title: "Shekhar Dangi",
+  description: "Diving deep into anything I find interesting!",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html data-color-mode="dark" lang="en">
-      <head></head>
+      <head>
+        <link rel="icon" href="/favicon.png" />
+      </head>
 
       <body>
         <AuthProvider>

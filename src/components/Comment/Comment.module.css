@@ -5,3 +5,14 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.info {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.info span {
+  color: rgb(62, 61, 61);
+  text-decoration: none;
+  font-size: 0.8rem;
+  margin-left: 0.1rem;
+}
