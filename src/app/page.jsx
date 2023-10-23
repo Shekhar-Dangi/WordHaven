@@ -30,18 +30,14 @@ export default async function Home() {
         <div>
           <div className="flex">
             {" "}
-            <div className={`f3 tWebHead`}>INQUIRING ?</div>
+            <div className={`f3 tWebHead`}>QUESTIONS ?</div>
             <div className={styles.arc}></div>
           </div>
           <div className={`tNav`}>QUESTIONING THE QUESTIONS</div>
         </div>
         <div className={styles.buttonGroup}>
-          <Link href={"/journal"}>
-            {" "}
-            <Button color={"white"} backCol="red" text="JOURNAL" />
-          </Link>
           <Link href={"/words"}>
-            <Button color={"white"} backCol="red" text="BLOG" />
+            <Button color={"white"} backCol="red" text="READ" />
           </Link>
         </div>
       </div>
