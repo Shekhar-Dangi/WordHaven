@@ -52,7 +52,7 @@ const Comments = ({ comments, id }) => {
       <h2 className={`${styles.cHead} f1half`}>Comments({comms.length})</h2>
 
       {comms.map((comment) => (
-        <Comment obj={comment} />
+        <Comment key={comment.date} obj={comment} />
       ))}
     </div>
   );
