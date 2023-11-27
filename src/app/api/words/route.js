@@ -29,12 +29,13 @@ export const POST = async (req) => {
 
   try {
     await connectDB();
-    const { title, content, author, publicationStatus, postType } =
+    const { bookId, title, content, author, publicationStatus, postType } =
       await req.json();
     const user = await User.findOne({ email: author.email });
     const post = new Post({
       title,
       content,
+      bookId,
       author: {
         email: author.email,
         profileImage: author.image,
@@ -55,8 +56,16 @@ export const POST = async (req) => {
   }
 };
 export const PUT = async (req, { params }) => {
-  const { id, secret, title, content, author, publicationStatus, postType } =
-    await req.json();
+  const {
+    bookId,
+    id,
+    secret,
+    title,
+    content,
+    author,
+    publicationStatus,
+    postType,
+  } = await req.json();
   if (!(secret == process.env.UC)) {
     return new NextResponse(
       JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
@@ -76,11 +85,12 @@ export const PUT = async (req, { params }) => {
     post.content = content;
     post.publicationStatus = publicationStatus;
     post.postType = postType;
+    post.bookId = bookId;
     const updatedPost = await post.save();
 
     return new NextResponse(
       JSON.stringify(
-        { message: "Updated!", id: updatedPost._id },
+        { message: "Updated!", id: updatedPost._id, bookId },
         { status: 200 }
       )
     );

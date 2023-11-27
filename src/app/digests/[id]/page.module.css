@@ -1,0 +1,29 @@
+.container {
+  width: 85%;
+  margin: auto;
+  min-height: 100vh;
+}
+.heading {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.info span {
+  color: rgb(62, 61, 61);
+  text-decoration: none;
+  font-size: 0.8rem;
+  margin-left: 0.1rem;
+}
+.cHead {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+@media (min-width: 770px) {
+  .container {
+    width: 70%; /* Show when the width is greater than 800px */
+  }
+}

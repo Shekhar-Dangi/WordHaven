@@ -1,0 +1,19 @@
+.container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  min-height: 90vh;
+}
+.posts {
+  flex: 2;
+}
+.cat {
+  flex: 1;
+}
+.loader {
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

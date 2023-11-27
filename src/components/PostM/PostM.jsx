@@ -7,7 +7,7 @@ import { getDate } from "@/utils/date";
 import { Remarkable } from "remarkable";
 import Image from "next/image";
 
-const PostM = ({ imgUrl, title, author, time, content, id }) => {
+const PostM = ({ book, imgUrl, title, author, time, content, id }) => {
   const md = new Remarkable({ html: true });
   return (
     <div id={id} className={styles.container}>
@@ -15,7 +15,11 @@ const PostM = ({ imgUrl, title, author, time, content, id }) => {
       <div className={styles.textContainer}>
         <span className={`${styles.title} f1half`}>{title}</span>
         <div className={styles.details}>
-          <ProfileS isNew={true} obj={author} size={"30px"} />
+          {!book ? (
+            <ProfileS isNew={true} obj={author} size={"30px"} />
+          ) : (
+            author
+          )}
           <span> &middot; {getDate(time)}</span>
         </div>
 
@@ -25,7 +29,7 @@ const PostM = ({ imgUrl, title, author, time, content, id }) => {
             __html: md.render(content.slice(0, 100) + "..."),
           }}
         ></p>
-        <Link href={`/words/${id}`}>
+        <Link href={!book ? `/words/${id}` : `/digests/${id}`}>
           <Button color={"white"} backCol={"black"} text={"Read More"} />
         </Link>
       </div>

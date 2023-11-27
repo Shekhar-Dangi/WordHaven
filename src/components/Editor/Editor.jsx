@@ -7,13 +7,7 @@ import { useState } from "react";
 const MDEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false });
 function Editor({ value, setValue }) {
   return (
-    <div
-      onChange={() => {
-        console.log(value);
-      }}
-      className="mb_1"
-      data-color-mode="dark"
-    >
+    <div onChange={() => {}} className="mb_1" data-color-mode="dark">
       <MDEditor
         autoFocus="on"
         key={1}

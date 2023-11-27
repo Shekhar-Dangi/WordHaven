@@ -17,7 +17,7 @@ const BigEditor = ({ post, edit, id }) => {
   const [postStatus, setPostStatus] = useState(
     edit ? post.publicationStatus : "draft"
   );
-  const [postType, setPostType] = useState(edit ? post.postType : "journal");
+  const [postType, setPostType] = useState(edit ? post.postType : "book");
   const handleSubmit = async () => {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}api/words`,
@@ -31,11 +31,13 @@ const BigEditor = ({ post, edit, id }) => {
           secret: secret || "",
           postType,
           publicationStatus: postStatus,
+          bookId: post.bookId,
         }),
       }
     );
     const data = await res.json();
-    router.push(`/words/${data.id}`);
+    if (postType == "book") router.push(`/digests/${post.bookId}`);
+    else router.push(`/words/${data.id}`);
   };
   const handlePostStatus = (event) => {
     setPostStatus(event.target.value);
@@ -92,7 +94,7 @@ const BigEditor = ({ post, edit, id }) => {
         id="type"
         className={styles.minimalDropdown}
       >
-        <option value="journal">Journal</option>
+        <option value="book">Book</option>
         <option value="blog">Blog</option>
       </select>
       <Editor value={value} setValue={setValue} />

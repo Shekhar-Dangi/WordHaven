@@ -6,6 +6,10 @@ import { getAuthSession } from "@/utils/auth";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 export default async function Home() {
+  function getRandomPosts(posts, num) {
+    const shuffled = posts.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, num);
+  }
   const getPosts = async () => {
     const session = await getAuthSession();
     try {
@@ -30,14 +34,19 @@ export default async function Home() {
         <div>
           <div className="flex">
             {" "}
-            <div className={`f3 tWebHead`}>QUESTIONS ?</div>
+            <div className={`f3 tWebHead`}>ABSORBING</div>
             <div className={styles.arc}></div>
           </div>
-          <div className={`tNav`}>QUESTIONING THE QUESTIONS</div>
+          <div className={`tNav`}>
+            Diving deep into anything I find interesting!
+          </div>
         </div>
         <div className={styles.buttonGroup}>
           <Link href={"/words"}>
             <Button color={"white"} backCol="red" text="READ" />
+          </Link>
+          <Link href={"/digests"}>
+            <Button color={"white"} backCol="red" text="DIGESTS" />
           </Link>
         </div>
       </div>
@@ -46,20 +55,9 @@ export default async function Home() {
         <h1>Recent Posts</h1>
         <div className={styles.newPosts}>
           {data != null &&
-            data.map((post) => (
-              <PostL
-                key={post._id}
-                title={post.title}
-                id={post._id}
-                imageUrl={post.featuredImage}
-              />
-            ))}
-        </div>
-        <div className={styles.recPostsH}>
-          <h1>Recommended Posts</h1>
-          <div className={styles.newPosts}>
-            {data != null &&
-              data.map((post) => (
+            data
+              .slice(-3)
+              .map((post) => (
                 <PostL
                   key={post._id}
                   title={post.title}
@@ -67,9 +65,19 @@ export default async function Home() {
                   imageUrl={post.featuredImage}
                 />
               ))}
-          </div>
-          <div className={styles.leftAlign}>
-            <Button color="white" backCol="black" text={"Read More"} />{" "}
+        </div>
+        <div className={styles.recPostsH}>
+          <h1>Recommended Posts</h1>
+          <div className={styles.newPosts}>
+            {data != null &&
+              getRandomPosts(data, 3).map((post) => (
+                <PostL
+                  key={post._id}
+                  title={post.title}
+                  id={post._id}
+                  imageUrl={post.featuredImage}
+                />
+              ))}
           </div>
         </div>
       </div>

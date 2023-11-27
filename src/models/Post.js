@@ -19,6 +19,10 @@ const blogPostSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  bookId: {
+    type: "String",
+    default: null,
+  },
   tags: [String], // An array to store tags or categories
   featuredImage: String, // URL or reference to a featured image
   comments: [
@@ -63,8 +67,8 @@ const blogPostSchema = new mongoose.Schema({
   averageRating: Number, // Average reader rating
   postType: {
     type: String,
-    enum: ["journal", "blog"],
-    default: "journal",
+    enum: ["book", "blog"],
+    default: "book",
   },
 });
 

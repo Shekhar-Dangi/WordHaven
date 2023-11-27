@@ -17,6 +17,9 @@ const Navbar = () => {
         <Link className={styles.item} href="/words">
           Posts
         </Link>
+        <Link className={styles.item} href="/digests">
+          Digests
+        </Link>
         <Link
           className={styles.item}
           href="https://main--incredible-empanada-2c926a.netlify.app/"

@@ -12,7 +12,8 @@ const GenerateWordsPage = () => {
   const [featuredImage, setFeaturedImage] = useState(null); // Use state to manage the featured image
   const [attachments, setAttachments] = useState([]); // Use state to manage attachments
   const [postStatus, setPostStatus] = useState("draft");
-  const [postType, setPostType] = useState("journal");
+  const [postType, setPostType] = useState("book");
+  const [bookId, setBookId] = useState(null);
   const [value, setValue] = useState("");
   const { data: session, status } = useSession();
   const handleImageUpload = (e) => {
@@ -45,11 +46,13 @@ const GenerateWordsPage = () => {
         author: session?.user,
         publicationStatus: postStatus,
         postType,
+        bookId,
       }),
     });
     const data = await res.json();
 
-    router.push(`/words/${data.id}`);
+    if (!postType == "book") router.push(`/words/${data.id}`);
+    else router.push(`/digests/${bookId}`);
   };
 
   useEffect(() => {
@@ -88,10 +91,17 @@ const GenerateWordsPage = () => {
         id="type"
         className={styles.minimalDropdown}
       >
-        <option value="journal">Journal</option>
+        <option value="book">Book</option>
         <option value="blog">Blog</option>
-      </select>
-
+      </select>{" "}
+      <br />
+      <input
+        className={styles.text}
+        type="text"
+        placeholder="Book Id"
+        value={bookId}
+        onChange={(e) => setBookId(e.target.value)}
+      />
       {/* <div className={styles.uploadSection}>
         <label htmlFor="featuredImage" className={styles.uploadLabel}>
           Upload Featured Image
