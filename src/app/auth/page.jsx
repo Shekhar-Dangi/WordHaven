@@ -65,19 +65,10 @@ const LoginPage = () => {
                 <InputBox />
                 Keep me signed in
               </div>
-              <span
-                onClick={() => {
-                  toast("Try logging in with google!");
-                }}
-                className="f07 link"
-              >
-                New User?
-              </span>
+              <span className="f07 link">New User?</span>
             </div>
             <Button
-              onClick={() => {
-                toast("Try logging in with google");
-              }}
+              onClick={() => {}}
               text={"Login"}
               color={"white"}
               backCol={"#4A8076"}
