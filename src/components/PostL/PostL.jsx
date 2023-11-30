@@ -9,10 +9,12 @@ function PostL({ title, id, imageUrl }) {
   return (
     <div id={id} href={""} className={`${styles.down} post`}>
       <img className={styles.imgL} src={imageUrl} alt="Post" />
-      <p className={styles.para}>{title}</p>
-      <Link href={`/words/${id}`}>
-        <Button color={"white"} backCol={"black"} text={"Read"} />
-      </Link>
+      <div>
+        <p className={styles.para}>{title}</p>
+        <Link href={`/words/${id}`}>
+          <Button color={"white"} backCol={"black"} text={"Read"} />
+        </Link>
+      </div>
     </div>
   );
 }

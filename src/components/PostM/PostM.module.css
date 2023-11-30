@@ -31,6 +31,9 @@
 .content {
   margin-bottom: 1rem;
 }
+.textContainer {
+  margin: 1rem 0 0 1rem;
+}
 @media (min-width: 770px) {
   .container {
     flex-direction: row;
